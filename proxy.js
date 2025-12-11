@@ -132,7 +132,7 @@ function createProxyServer(port) {
     })
 
 }
-createProxyServer(8088)
+createProxyServer(process.env.PORT || 8080)
 
 // listenAJCRWebsocket(8089); 
 
