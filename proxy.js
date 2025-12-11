@@ -125,7 +125,8 @@ function createProxyServer(port) {
         })
     })
     // app.listen(port, () => console.log(`Proxy running on http://127.0.0.1:${port}`));
-    server.listen(port, () => console.log("Websocket running on http://127.0.0.1:" + String(port)))
+    const PORT = process.env.PORT || port
+    server.listen(PORT, () => console.log("Websocket running on http://127.0.0.1:" + String(PORT)))
     // const PORT = process.env.PORT || port
     // server.listen(PORT, () => {
     //     console.log("Unified server running on port " + PORT)
