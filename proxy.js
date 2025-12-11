@@ -133,7 +133,7 @@ function createProxyServer(port,wsPort) {
     })
 
 }
-[8088].forEach(createProxyServer);
+createProxyServer(8088)
 
 // listenAJCRWebsocket(8089); 
 
