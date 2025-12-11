@@ -18,8 +18,7 @@ const { Readable } = require("stream");
 const WebSocket = require('ws');
 const { WebSocketServer } = require('ws');
 
-function createProxyServer(port,wsPort) {
-    wsPort = wsPort || 8089
+function createProxyServer(port) {
     const app = express();
     const server = http.createServer(app);
 
