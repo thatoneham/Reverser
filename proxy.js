@@ -115,7 +115,10 @@ function createProxyServer(port) {
                 proxy.on("message", msg => client.send(msg))
                 client.on("message", msg => proxy.send(msg))
 
-                proxy.on("close", () => client.close())
+                proxy.on("close", () => {
+                    console.log("connection closed")
+                    client.close()
+                })
                 client.on("close", () => proxy.close())
             })
 
@@ -123,6 +126,13 @@ function createProxyServer(port) {
                 console.log("Proxy WS error " + err.message)
                 client.close()
             })
+            proxy.on("close", (code, reason) => {
+                console.log("Photon closed connection:", code, reason.toString())
+            })
+            proxy.on("unexpected-response", (req, res) => {
+                console.log("Photon rejected handshake with HTTP status:", res.statusCode)
+            })
+
         })
     })
     // app.listen(port, () => console.log(`Proxy running on http://127.0.0.1:${port}`));
