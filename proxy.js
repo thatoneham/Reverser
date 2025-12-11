@@ -97,6 +97,7 @@ function createProxyServer(port) {
             socket.destroy();
             return
         }
+        console.log("got upgrade for " + url)
         wss.handleUpgrade(req, socket, head, client => {
             wss.emit("connection", client, req)
             var fixedheaders = req.headers
